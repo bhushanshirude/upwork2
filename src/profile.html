@@ -1,0 +1,95 @@
+<style>
+    .row b {
+        margin-left: 20px;
+    }
+    
+    .row textarea {
+        width: 420px;
+        margin-left: 20px;
+    }
+    
+    .dollar-container:hover {
+        color: #f0ad4e;
+        cursor: pointer;
+        border-bottom: solid 2px green;
+    }
+    
+    .card-footer button {
+        margin-left: 360px;
+    }
+</style>
+<div class="card col-md-8 offset-2 mt-5 ">
+    <div class="card-header">
+        <h5>Thank you for interest in AngularMinds...!</h5>
+        <p>An application is required to join AngularMinds.Once submitted,we typically take 24 hours to review your application and we will notify you if your application is approved or declined. Not all applications are approved, so take time to fill out
+            the following info accurately.</p>
+    </div>
+    <form #continueForm="ngForm" (ngSubmit)="continue(continueForm,$event)" novalidate>
+        <div class="card-body">
+            <h6>To begin your application to join, tell us about yourself and complete a profile for review</h6>
+            <div class="row mt-3 ">
+                <label>
+                <b>What are the main services you offer to clients?</b>
+            </label>
+            </div>
+            <div class="row">
+                <div class="col-sm-5 mt-3">
+                    <select class="form-control" id="Skills" name="Clients" [(ngModel)]="userData.personalDetails.Clients" #Clients="ngModel" required>
+                        <option >Select Your Field......</option>
+                        <option >Web,mobile & software Dev</option>
+                        <option >IT & Networking</option>
+                        <option >Data science & Analytics</option> 
+                        <option >Enginerring & Architecture</option>
+                        <option >Other</option>
+                 </select>
+                </div>
+            </div>
+            <div class="row mt-3 ">
+                <label>
+                    <b>What skills do you offer clients?</b>
+                </label>
+            </div>
+            <div class="row mt-3">
+                <textarea input type="text" id="Clients" name="ClientsSkills" [(ngModel)]="userData.personalDetails.ClientsSkills" #ClientsSkills="ngModel" required> </textarea>
+            </div>
+            <small class="text-danger" *ngIf="continueForm.submitted && ClientsSkills.invalid">Enter What skills do you offer clients? </small>
+            <div class="row mt-3 ">
+                <label>
+                    <b>What is your experience level?</b>
+                </label>
+            </div>
+
+            <div class="row">
+                <div class="col-md-3 mt-3">
+                    <div class="card" (click)="userData.personalDetails.ExperienceLevel ='Entry Level'">
+                        <div class=" card-body  text-center dollar-container">
+                            <span class="dollar">$</span><br/>
+                            <span class="dollar-text " id="0" name="Experience">Entry Level</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-3">
+                    <div class="card" (click)="userData.personalDetails.ExperienceLevel = 'intermediate Level'">
+                        <div class=" card-body  text-center dollar-container">
+                            <span class="dollar">$$</span><br/>
+                            <span class="dollar-text " id="1" name="Experience">intermediate Level</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mt-3">
+                    <div class="card" (click)="userData.personalDetails.ExperienceLevel ='Expert Level'">
+                        <div class=" card-body  text-center dollar-container ">
+                            <span class="dollar">$$$</span><br/>
+                            <span class="dollar-text " id="2" name="Experience">Expert Level</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer mt-3 mb-3">
+            <button class="btn btn-primary" type="submit"> Save & Continue</button>
+        </div>
+    </form>
+</div>
+
+<!-- [routerLink]="['/home/update']" (click)="continue()" -->

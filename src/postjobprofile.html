@@ -1,0 +1,49 @@
+<style>
+    .card span {
+        cursor: pointer;
+    }
+    
+    .card:hover {
+        cursor: pointer;
+        border-bottom: solid 2px #f0ad4e;
+        ;
+    }
+</style>
+
+<div class="card col-md-6 offset-3">
+
+    <div class="card-header">
+        <h5 style="margin-left:180px;">Welcome To AngularMinds</h5>
+    </div>
+    <form #postForm="ngForm" (ngSubmit)="jobpost(postForm,$event)" novalidate>
+        <div class="card-body">
+            <div class="row" style="margin-left:5px;">
+                <h6>Tell us What you want to get done...?</h6>
+            </div>
+            <div class="row col-md-10 mt-3">
+                <input type="text" id="get" class="form-control" placeholder="Example : I Need A Angular Developer." name="GetDone" [(ngModel)]="userData.personalDetails.GetDone" #GetDone="ngModel" required>
+            </div>
+            <div class="row mt-3" style="margin-left:5px;">
+                <h6>What Kind of project do you have...? </h6>
+            </div>
+            <div class="row mt-3">
+                <div class="card offset-1 ">
+                    <div class=" card-body col-md-12 ">
+                        <div class="fa fa-server" style="color:green; margin-left:50px;"></div><br>
+                        <span class="dollar-text mt-5" (click)="userData.personalDetails.project='On Going Project'">On Going Project</span>
+                    </div>
+                </div>
+                <div class="card offset-2">
+                    <div class="card-body col-md-12">
+                        <div class="fa fa-tasks" style="color:green; margin-left:50px;"></div><br>
+                        <span class="dollar-text " (click)="userData.personalDetails.project='One Time Project'">One Time Project</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary" style="margin-left:200px;" type="submit">Continue Job Post</button>
+        </div>
+    </form>
+</div>
+<!-- [routerLink]="['/home/postupdate']" (click)="jobpost()" -->

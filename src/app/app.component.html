@@ -1,3 +1,40 @@
-<h1>
-  {{title}}
-</h1>
+<style>
+    .navbar-nav a {
+        color: white;
+        margin-left: 50px;
+    }
+    
+    .page-footer {
+        background-color: #56a24f;
+    }
+    
+    .list-unstyled li {
+        color: white;
+        cursor: pointer;
+    }
+    
+    .text-uppercase {
+        color: white;
+    }
+</style>
+
+<nav class="navbar navbar-expand-sm bg- navbar-dark" style="background-color:#56a24f;">
+    <a class="navbar-brand" href="#">TestPortal</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+  </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a [routerLink]="['/home']">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="fa fa-user-o" [routerLink]="['/home/register']"> Singup</a>
+            </li>
+            <li class="nav-item">
+                <a class="fa fa-user-o" [routerLink]="['/home/login']"> Login</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<router-outlet></router-outlet>

@@ -1,0 +1,38 @@
+<style>
+    input[type="radio"] {
+        -webkit-appearance: radio !important;
+        position: inherit;
+        opacity: inherit;
+    }
+</style>
+<div class="card col-sm-9" style="margin-left:150px; margin-top:80px;">
+    <div class="card-header">
+        <h5 style="color:green">Interview Apptitude Test</h5>
+    </div>
+    <div class="card-body" id="mainPart">
+        <div *ngIf="flag == '0'">
+            <div *ngFor="let question of questions; let i = index">
+                <ul *ngIf="index == i">
+                    <li><b style="text-decoration: none;">{{i+1}} . {{question.questionText}}</b></li>
+                    <ul *ngFor="let option of question.options;let userAns = index">
+                        <label> <input name="option" type="radio" value="{{option}}" style="margin-top:20px" (click)="SaveOption(userAns)" style="font-size:20px; margin-left:-50px;">{{ option }}</label>
+                    </ul>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <button style="background-color:green" class="btn btn-primary" [disabled]="btnFlag == '1'" (click)="updateCurrentQuestion()">Next</button>
+                <button style="background-color:red" class="btn btn-danger " [disabled]="btnFlag == '0'" (click)="endTest()">End</button>
+            </div>
+        </div>
+        <div *ngIf="flag == '1'">
+            <h4> Total Number of Questions: {{this.questions.length}} </h4>
+            <h3 class="text-success">Right Answers:{{this.total}}</h3>
+            <h3 class="text-danger">Wrong Answers:{{(this.questions.length - this.total)}}</h3>
+            <div class="card-footer">
+                <button style=" width:250px; height:50px;" class="btn btn-danger " [disabled]="btnFlag == '0'" [routerLink]="['/home/test']" (click)="endTest()">End Test</button>
+            </div>
+        </div>
+    </div>
+
+
+</div>

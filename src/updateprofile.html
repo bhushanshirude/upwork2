@@ -1,0 +1,134 @@
+<style>
+    .card-footer button {
+        margin-left: 400px;
+    }
+    
+    .col {
+        margin-left: 20px;
+    }
+    
+    .row textarea {
+        width: 700px;
+        height: 100px;
+    }
+    
+    .row img {
+        width: 150px;
+        height: 120px;
+        cursor: pointer;
+    }
+</style>
+<form #reviewForm="ngForm" (ngSubmit)="review(reviewForm,$event)" novalidate>
+    <div class="card col-md-10 offset-1">
+        <div class="card-header">
+            <h5 class="mb-3">Create your Profile for Consideration</h5>
+            <span>The information you include in your profile will largely determine whether you are approved to join our marketplace. If approved, this <br>will become 
+                <span style="color:blue; cursor:pointer">your public profile that you’ll use to market freelance business to clients (you can edit this  info and your privacy settings<br> anytime).</span></span><br>
+            <span>Looking for inspiration? Check out these strong profile examples from a writer/translator,<span style="color:blue; cursor:pointer"> a developer, and a customer service agent.
+        </span><br>eleased in English territories as Wagnaria!!, is a Japanese four-panel comic strip manga series written and illustrated </span>
+        </div>
+        <div class="card-body">
+            <div class="col">
+                <div class="row">
+                    <h5>What you've told us so far...!</h5>
+                </div>
+                <div class="row mt-2">
+                    <span> You want to work in : <b> {{userData.personalDetails.Clients}}.</b></span>
+                </div>
+
+                <div class="row mt-2">
+                    <span>Your skills are : <b>{{userData.personalDetails.ExperienceLevel}}.</b></span>
+                </div>
+                <div class="row mt-2 mb-2">
+                    <span>Your experience level is :  <b>{{userData.personalDetails.ClientsSkills}}.</b></span>
+                </div>
+                <div class="row mt-5">
+                    <h5><b>Tell us more about you</b></h5>
+                </div>
+                <div class="row">
+                    <label>Please upload a professional portrait that clearly shows your face</label>
+                </div>
+                <div class="row">
+                    <div class="col-3 offset-1 mb-3" style="margin-top:10px;" id="img-container">
+                        <img [src]="'images/1.png'" onclick="$('#input-img').click()" id="user_image">
+                        <input type="file" name="profile_img" id="input-img" onChange="angular.element(this).scope().SaveImage(this)" hidden/>
+                    </div>
+                    <div class="col-4 " style="margin-top: 20px;">
+                        <h6> Freelancers with a friendly, professional-looking portrait arehired 5 times more often than those without a photo.</h6>
+                    </div>
+                </div>
+                <div class="row mt-3">
+                    <h6><b>Add a professional title that describe the work you do...?</b></h6>
+                </div>
+                <div class="row mt-3">
+                    <h6><b>What is your Job Role...?</b></h6>
+                </div>
+                <div class="row col-md-6 mt-3" style="margin-left:-30px;">
+                    <input type="text" class="form-control" placeholder="Exmaple : Angular Developer." name="Role" [(ngModel)]="userData.personalDetails.Role">
+                </div>
+                <div class="row mt-3">
+                    <h6><b>Describe your self overview...?</b></h6>
+                </div>
+                <div class="row mt-2">
+                    <p>Highlight your top skills, experience, and interests. This is one of the first things clients will see on your profile.</p>
+                    <textarea name="Overview" [(ngModel)]="userData.personalDetails.Overview"></textarea>
+                </div>
+                <div class="row mt-4">
+                    <h6><b>What is your English proficiency...?</b></h6>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 mt-3">
+                        <select class="form-control" style="margin-left:-20px;" name="English" [(ngModel)]="userData.personalDetails.English">
+                                <option>Select your proficiency</option>
+                                <option>Basic - I am only able to communicate in this language...</option>
+                                <option>Conversational - I know this language well enough to ...</option>
+                                <option>Fluent - I have complete language perfect grammar...</option>
+                                <option>Native Bilingual - I have complete command language...</option>
+                                <option >Other</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="row mt-4" style="margin-left:-30px">
+                    <div class="col-md-5">
+                        <h6><b>Mobile No</b></h6>
+                        <input type="text " id="phone" name="Number " [(ngModel)]="userData.personalDetails.MobileNo" #Number="ngModel" [textMask]="{mask: mask} " class="form-control " placeholder="+91 (999) 999-9999 " required/>
+                    </div>
+                    <div class="col-md-5 offset-1">
+                        <h6><b>Country</b></h6>
+                        <select class="form-control" style="cursor: pointer;" id="Country" name="Country" [(ngModel)]="userData.personalDetails.country" #Country="ngModel" required>
+                            <option>Select Country</option>
+                            <option>America</option>
+                            <option>Australia</option>
+                            <option>Bangladesh</option>
+                            <option>China</option>
+                            <option>India</option>
+                            <option>Nepal</option>
+                            <option>Pakistan</option>
+                            <option>South Africa</option>
+                            <option>Zimbabwe</option>
+                        </select>
+                        <small class="text-danger" *ngIf="reviewForm.submitted && Country.invalid">Select Country Name...!</small>
+                    </div>
+                </div>
+                <small class="text-danger" *ngIf="reviewForm.submitted && Number.invalid">Enter Mobile Number...!</small>
+                <div class="row mt-5">
+                    <div class="col-5">
+                        <h5><b>Hourly Rate</b></h5>
+                        <label>Total amount the client will see.</label>
+                    </div>
+                    <div class="col-1">
+                        <h3 style="margin-left:50px; color:green;">$</h3>
+
+                    </div>
+                    <div class="col-5">
+                        <input type="text" style="margin-left:-10px" class="form-control" name="dollar" [(ngModel)]="userData.personalDetails.dollar" [textMask]="{mask: mask1} " placeholder="00.00" required>
+                        <label style="color: red; margin-left:-10px"> ! Please enter a value between $3.00 to $99.00</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button class="btn btn-primary" type="submit">Review Application & Submit</button>
+        </div>
+    </div>
+</form>s

@@ -1,0 +1,239 @@
+<style>
+    * {
+        box-sizing: border-box
+    }
+    
+    body {
+        font-family: "Lato", sans-serif;
+    }
+    
+    .tab {
+        float: left;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        width: 20%;
+        height: 167px;
+        margin-left: 10%;
+    }
+    
+    .tab button {
+        display: block;
+        background-color: inherit;
+        color: #858181;
+        padding: 15px 16px;
+        width: 100%;
+        border: none;
+        outline: none;
+        text-align: left;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 17px;
+    }
+    
+    .tab button:hover {
+        background-color: #37a000;
+        color: white;
+    }
+    
+    .tab button.active {
+        background-color: #37a000;
+    }
+    
+    .card-body input[type=text] {
+        padding: 4px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+    }
+    
+    .card-body button {
+        width: 8%;
+        padding: 8px;
+        background: #858181;
+        color: white;
+        font-size: 17px;
+        border: 1px solid grey;
+        cursor: pointer;
+    }
+    
+    .row img {
+        width: 100px;
+        height: 100px;
+        margin-left: 230px;
+    }
+</style>
+<div class="container" ng-init="getalljobs()">
+    <div class="tab">
+        <button class="tablinks active" style="color:white" onclick="openCity(event,'Jobs')" id="defaultOpen">view invitation</button>
+        <button class="tablinks" onclick="openCity(event,'Job')">Search Job</button>
+        <button class="tablinks" onclick="openCity(event,'Joks')">Saved Jobs</button>
+    </div>
+    <div id="Jobs" class="tabcontent">
+        <div class="card col-7 offset-4 mt-5">
+            <div class="card-header mb-6">
+                <h3 style="text-align: center;">View Invitation</h3>
+            </div>
+            <div class="card-body">
+                <div class="input-group mt-2">
+                    <input [type]="text" class="form-control" id="search" placeholder="Example : Angular Developer.">
+                    <div class=" input-group-append ">
+                        <span class="input-group-text ">
+                             <a href="javascript:void(0) "><i class="fa fa-search form-control-feedback "></i></a>
+                        </span>
+                    </div>
+                </div>
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <table class="table table-striped">
+                            <thead class="menu" style="color: white; background-color:green">
+                                <tr>
+                                    <th>No</th>
+                                    <th>Job Title</th>
+                                    <th>Type</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tr>
+                                    <td>{{1}}</td>
+                                    <td>{{userData.personalDetails.GetDone}}</td>
+                                    <td>{{userData.personalDetails.project}}</td>
+                                    <td><input type="radio" name="radio" ng-click="SelectThisJob($index) ">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="container">
+                    <button class="btn btn-info mt-3 mb-3" data-toggle="modal" data-target="#myModal" style="margin-left: 250px;">view</button>
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-heade">
+                                    <button type="button" class="close" data-dismiss="modal" style="margin-right: 40px; margin-top: 20px;">&times;</button>
+                                    <h4 class="modal-title" style="margin-left: 10px; margin-top: 20px; color: #949292;">User profile</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h4> <b>{{userData.personalDetails.Role}}</b>
+                                            </h4>
+                                        </div>
+                                    </div><br>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <p><b>Job Description : <br></b>{{userData.personalDetails.Overview}}</p>
+                                        </div>
+                                    </div>
+                                    <h4 style="color: #949292;"><b>TimeLine</b></h4>
+                                    <br>
+                                    <div class="row mt-5">
+                                        <div class="col-4">
+                                            <p><b>English level : </b>{{userData.personalDetails.English}}</p>
+                                        </div>
+                                        <div class="col-8">
+                                            <p><b>Project Name : </b>{{userData.personalDetails.projectName}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-4">
+                                            <p><b>Experience : </b>{{userData.personalDetails.ExperienceLevel}}</p>
+                                        </div>
+                                        <div class="col-8">
+                                            <p><b>Payment Option : </b>{{userData.personalDetails.Role}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Job" class="tabcontent" style="margin-top:00px;">
+        <div class="card col-7  mt-5 offset-4 ">
+            <div class="card-header mb-6">
+                <h3 style="text-align: center;">My Job Feed</h3>
+            </div>
+            <div class="card-body">
+                <div class="input-group mt-2">
+                    <input [type]="text" class="form-control" id="search" placeholder="Example : Angular Developer.">
+                    <div class=" input-group-append ">
+                        <span class="input-group-text ">
+                                     <a href="javascript:void(0) "><i class="fa fa-search form-control-feedback "></i></a>
+                                </span>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <img [src]="'images/2.png'">
+                    <div class="col-12 mt-3">
+                        <p>job searching is the act of looking for employment underemployment,discontent with a current position a desire for a better position.</p>
+                        <p> A job description or JD is a document that describes the general tasks, or other related, and responsibilities of a position. It may specify the functionary to whom the position reports, specifications such as the qualifications
+                            or skills needed by the person in the job, and a salary range.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Joks" class="tabcontent">
+        <div class="card col-7 offset-4 mt-5">
+            <div class="card-header">
+                <h3 style="text-align: center;">Saved Jobs</h3>
+            </div>
+            <div class="col-sm-12">
+                <div class="card-header">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <h4> <b>
+                                    </b>
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <p><b>Job Description : <br></b>
+                                </p>
+                            </div>
+                        </div>
+                        <h4 class="mb-3" style="color: #949292;"><b>TimeLine</b></h4>
+                        <div class="row">
+                            <div class="col-4">
+                                <p><b>English level : </b>
+                                </p>
+                            </div>
+                            <div class="col-8">
+                                <p><b>Project Name : </b>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                                <p><b>Experience : </b>
+                                </p>
+                            </div>
+                            <div class="col-8">
+                                <p><b>Payment Option : </b>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

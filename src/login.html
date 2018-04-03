@@ -1,0 +1,39 @@
+<style>
+    .row p {
+        color: blue;
+        cursor: pointer;
+        margin-left: 350px;
+    }
+</style>
+
+<div class="card col-md-5 offset-3 mt-5">
+    <div class="card-header">
+        <h5 class="offset-5">Login</h5>
+    </div>
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm,$event)" novalidate>
+        <div class="card-body">
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <h6><input class="form-control" id="Email" placeholder="Enter Email or MobileNumber" name="personalDetails.Email" ngModel #Email="ngModel" required></h6>
+                </div>
+            </div>
+            <small class="text-danger" *ngIf="loginForm.submitted && Email.invalid">Enter Email...!</small>
+
+            <div class="input-group mt-4">
+                <input [type]="isPwd?'password':'text'" class="form-control" id="password" placeholder="Enter Password" name="personalDetails.Password" ngModel #Password="ngModel" required>
+                <div class=" input-group-append ">
+                    <span class="input-group-text ">
+                        <a href="javascript:void(0) " (click)="isPwd=! isPwd "><i class="fa fa-eye form-control-feedback "></i></a>
+                    </span>
+                </div>
+            </div>
+            <small class="text-danger" *ngIf="loginForm.submitted && Password.invalid">Enter Password...!</small>
+        </div>
+        <div class="row">
+            <p [routerLink]="['/home/flogin'] ">Forgot password...?</p>
+        </div>
+        <div class="card-footer ">
+            <button class="btn btn-success offset-5 " type="submit">Login</button>
+        </div>
+    </form>
+</div>

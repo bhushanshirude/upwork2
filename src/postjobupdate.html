@@ -1,0 +1,131 @@
+<style>
+    .card-footer button {
+        margin-left: 480px;
+    }
+    
+    .row h6 {
+        margin-left: 15px;
+    }
+    
+    .card textarea {
+        height: 100px;
+    }
+    
+    .card:hover {
+        cursor: pointer;
+        border-bottom: solid 2px #f0ad4e;
+    }
+</style>
+
+<div class="card col-md-10 offset-1 mb-5 mt-3">
+    <div class="card-header">
+        <h5>Descripe the job</h5>
+    </div>
+    <form #updateForm="ngForm" (ngSubmit)="post(postForm ,$event)" novalidate>
+        <div class="card-body">
+            <div class="row">
+                <h6>Name of Job Posting</h6>
+            </div>
+            <div class="row col-md-8 mt-2">
+                <span class="form-control" readonly>{{userData.personalDetails.GetDone}}</span>
+            </div>
+            <div class="row mt-3">
+                <h6> Describe the Work to be done</h6>
+            </div>
+            <div class="row col-md-8 mt-2">
+                <textarea class="form-control" name="Describe" [(ngModel)]="userData.personalDetails.Describe" #Describe="ngModel"></textarea >
+        </div>
+        <div class="row mt-3">
+            <h5>Rate & Availibility</h5>
+        </div>
+        <div class="row mt-3">
+            <h6>How Would you like to pay...?</h6>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-6">
+                <select class="form-control" name="payment" [(ngModel)]="payment"  >
+                    <option>Select your Payment Option...</option>
+                    <option value='1' >Pay By The Hour</option>
+                    <option value='2' >Pay By Fixed Prize</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mt-3" *ngIf="payment=='1' " >
+                <div class="col-sm-6 ">
+                    <h6>How Do you long expected this job : </h6>
+                </div>
+                <div class="col-sm-6 ">  
+                </div>
+                <div class="card offset-1 mt-3" style="width:200px;">
+                    <div class="card-body">
+                        <span class="fa fa-ravelry" style="margin-left:60px; color:green"></span><br>
+                        <span class = "dollar-text " name="contract" (click)="userData.personalDetails.contract='More than 3 to 6 Month' ">More than 3 to 6 Month</span>
+                    </div>
+                </div>
+                    <div class="card offset-1  mt-3" style="width:200px;">
+                        <div class="card-body">
+                            <div class="fa fa-ravelry" style="margin-left:60px; color:green"></div><br>
+                            <span class = "dollar-text" name="contract" (click)="userData.personalDetails.contract='More than 6 to 12 Month' ">More than 6 to 12 Month</span>
+                        </div>
+                    </div>
+                    <div class="card offset-1  mt-3" style="width:200px;">
+                            <div class="card-body">
+                                <span class="fa fa-ravelry" style="margin-left:60px; color:green"></span><br>
+                                <span class = "dollar-text " name="contract" (click)="userData.personalDetails.contract='More than 1 to 2 Year' ">More than 1 to 2 Year</span>
+                            </div>
+                    </div>
+                    <div class="card offset-1  mt-3" style="width:200px; ">
+                        <div class="card-body">
+                            <span class=" fa fa-ravelry" style="margin-left:60px; color:green"></span><br>
+                            <span class = "dollar-text " name="contract" (click)="userData.personalDetails.contract='More than 2 to 5 Year' ">More than 2 to 5 Year</span>
+                        </div>
+                    </div>
+    </div>
+    <div *ngIf="payment=='2' ">
+        <div class="row col-md-6 mt-3">
+            <h6>Total Budget :</h6>
+        </div>     
+        <div class="row mt-3">
+            <div style="color:green">
+                  <p>  $</p>
+            </div>
+            <div class="col-md-6 ">
+                 <input class="form-control"  type="text" placeholder="00" name="dollar" [(ngModel)]="userData.personalDetails.dollar" #dollar="ngModel"  />
+            </div>
+        </div>
+           
+    </div>
+    <div class="row mt-3">
+        <h6>Desire Your English Level</h6>
+    </div>
+    <div class="row mt-3">
+                <div class = "col-3 ">
+                    <div class = "card ">
+                        <div class = "card-body text-center dollar-container ">
+                            <span class = "dollar" >$</span><br />
+                            <span class = "dollar-text " name="desired" (click)="userData.personalDetails.desired='Basic' ">Basic<br></span>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col-3 ">
+                    <div class = "card ">
+                       <div class = "card-body text-center dollar-container ">
+                            <span class = "dollar ">$$</span><br />
+                            <span class = "dollar-text " name="desired" (click)="userData.personalDetails.desired='Conventional' ">Conventional<br></span>
+                        </div>
+                    </div>
+                </div>
+                <div class = "col-3">
+                    <div class = "card ">
+                        <div class = "card-body text-center dollar-container ">
+                            <span class = "dollar ">$$$</span><br />
+                            <span class = "dollar-text " name="desired" (click)="userData.personalDetails.desired='Fluent' ">Fluent<br></span>
+                        </div>
+                    </div>
+                </div>
+    </div>
+    <div class="card-footer mt-5">
+        <button class="btn btn-primary" type="submit">Post Job</button>
+    </div>
+</div>
+</form>

@@ -1,0 +1,36 @@
+<div class="card col-md-10 offset-1 mt-5">
+    <div class="card-header" style="background-color:#56a24f">
+        <div class="row">
+            <div class="col-md-2">
+                <h6 style="color:white"> No</h6>
+            </div>
+            <div class="col-md-5">
+                <h6 style="color:white"> Test Name</h6>
+            </div>
+            <div class="col-md-2">
+                <h6 style="color:white"> Question</h6>
+            </div>
+            <div class="col-md-3">
+                <!-- <h6 style="color:white"> Start Test</h6> -->
+
+                <h6 style="color:white"> Start Test</h6>
+            </div>
+        </div>
+    </div>
+    <div class="card-body" *ngFor="let type of types; let i=index">
+        <div class="row">
+            <div class="col-md-2">
+                {{ i + 1}}
+            </div>
+            <div class="col-md-5">
+                {{type.name}}
+            </div>
+            <div class="col-md-2">
+                {{type.questions.length}}
+            </div>
+            <div class="col-md-3">
+                <a [routerLink]="['../start' ,type._id]" class="btn btn-primary">StartTest</a>
+            </div>
+        </div>
+    </div>
+</div>

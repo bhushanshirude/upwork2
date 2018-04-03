@@ -1,0 +1,26 @@
+<style>
+    .row p {
+        color: blue;
+        cursor: pointer;
+        margin-left: 350px;
+    }
+</style>
+
+<div class="card col-md-5 offset-3 mt-5">
+    <div class="card-header">
+        <h5 class="offset-4">ForgotPassWord</h5>
+    </div>
+    <form #loginForm="ngForm" (ngSubmit)="login(loginForm,$event)" novalidate>
+        <div class="card-body">
+            <div class="row mt-3">
+                <div class="col-md-12">
+                    <h6><input class="form-control" id="Email" placeholder="Enter Email or MobileNumber" name="personalDetails.Email" ngModel #Email="ngModel" required></h6>
+                </div>
+            </div>
+            <small class="text-danger" *ngIf="loginForm.submitted && Email.invalid">Enter Email...!</small>
+        </div>
+        <div class="card-footer ">
+            <button class="btn btn-success offset-5 " type="submit">Login</button>
+        </div>
+    </form>
+</div>
