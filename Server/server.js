@@ -11,7 +11,7 @@ var exphbs = require('express-handlebars');
 
 
 var url = 'http://localhost:8080/verify'
-// ****app initialization****
+    // ****app initialization****
 var app = express();
 
 // Only needed if you don't have a real mail account for testing
@@ -28,7 +28,8 @@ app.all("/*", function(response, response, next) {
 })
 
 app.use(bodyParser.json());
-app.use(fileupload())
+app.use(fileupload());
+app.use("/profile", express.static("uploads/profile"));
 /**** Setting up route ****/
 
 app.use("/", router);

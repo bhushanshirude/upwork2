@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule ,JsonpModule} from '@angular/http';
+import { ImageUploadModule } from 'ng2-imageupload';
 
 import { TextMaskModule } from 'angular2-text-mask/dist/angular2TextMask';
 import { routing } from './routing';
@@ -23,6 +24,7 @@ import {SearchComponent}from 'searchjob';
 import { httpService }from 'httpservice';
 import {verifyComponent}from 'verify';
 import {FloginComponent}from 'flogin';
+import{userComponent} from 'userprofile/userprofile'
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import {FloginComponent}from 'flogin';
     ViewComponent,
     SearchComponent,
     verifyComponent,
-    FloginComponent
+    FloginComponent,
+    userComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +53,8 @@ import {FloginComponent}from 'flogin';
     HttpModule,
     JsonpModule,
     routing,
-    TextMaskModule
+    TextMaskModule,
+    ImageUploadModule
   ],
   providers: [httpService],
 

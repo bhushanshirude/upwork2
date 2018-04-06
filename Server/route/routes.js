@@ -10,6 +10,7 @@ routes.post("/user/find", users.findData);
 routes.post("/user/forgotPasswordEmail", users.forgotPassword);
 routes.post("/user", users.create);
 routes.put("/user/:id", users.update);
-// routes.delete("user/:id", users.remove);
+routes.post("/user/upload/:id", users.uploadFile)
+    // routes.delete("user/:id", users.remove);
 
 module.exports = routes;

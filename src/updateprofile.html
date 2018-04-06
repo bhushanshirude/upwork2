@@ -17,6 +17,10 @@
         height: 120px;
         cursor: pointer;
     }
+    
+    .file-over {
+        border: dotted 3px red;
+    }
 </style>
 <form #reviewForm="ngForm" (ngSubmit)="review(reviewForm,$event)" novalidate>
     <div class="card col-md-10 offset-1">
@@ -48,11 +52,15 @@
                 <div class="row">
                     <label>Please upload a professional portrait that clearly shows your face</label>
                 </div>
+                <h6>user Profile</h6>
                 <div class="row">
-                    <div class="col-3 offset-1 mb-3" style="margin-top:10px;" id="img-container">
-                        <img [src]="'images/1.png'" onclick="$('#input-img').click()" id="user_image">
-                        <input type="file" name="profile_img" id="input-img" onChange="angular.element(this).scope().SaveImage(this)" hidden/>
+                    <div class="form-group">
+                        <div *ngIf="profileImg">
+                            <img [src]="profileImg" id="profileImg">
+                        </div>
+                        <input class="form-control" type="file" placeholder="Beta! upload file" name="filename" (change)="fileChange($event)">
                     </div>
+
                     <div class="col-4 " style="margin-top: 20px;">
                         <h6> Freelancers with a friendly, professional-looking portrait arehired 5 times more often than those without a photo.</h6>
                     </div>
@@ -131,4 +139,4 @@
             <button class="btn btn-primary" type="submit">Review Application & Submit</button>
         </div>
     </div>
-</form>s
+</form>

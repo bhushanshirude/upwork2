@@ -47,20 +47,10 @@
         width: 80%;
         background: #f1f1f1;
     }
-    
-    .card-body button {
-        width: 8%;
-        padding: 8px;
-        background: #858181;
-        color: white;
-        font-size: 17px;
-        border: 1px solid grey;
-        cursor: pointer;
-    }
 </style>
 <div class="container" ng-init="getalljobs()">
     <div class="tab">
-        <button class="tablinks active" style="color:white" onclick="openCity(event,'post')" id="defaultOpen">View Post</button>
+        <button class="tablinks active" onclick="openCity(event,'post')" id="defaultOpen">View Post</button>
         <button class="tablinks" onclick="openCity(event,'proposals')">View Proposals</button>
         <button class="tablinks" onclick="openCity(event,'invite')">View Invite</button>
         <button class="tablinks" onclick="openCity(event,'freelancers')">Search Freelancers</button>
@@ -110,7 +100,7 @@
                 </div>
                 <div class="row">
                     <div class="container">
-                        <button class="btn btn-info mb-3" data-toggle="modal" data-target="#myModal" style="margin-left: 250px;">view</button>
+                        <button class="btn btn-info mb-3" data-toggle="modal" data-target="#myModal" style="margin-left: 250px; width:80px;">view</button>
                         <button class="btn btn-danger mb-3" data-target="#myModal" style="margin-left: 20px;">Remove</button>
                         <div class="modal fade" id="myModal" role="dialog">
                             <div class="modal-dialog modal-lg">
@@ -122,10 +112,15 @@
                                     <div class="modal-body">
                                         <div class="row">
                                             <div class="col-12">
-                                                <h6> Name : <b> {{userData.personalDetails.FirstName}}  {{userData.personalDetails.LastName}}</b>
-                                                </h6>
+                                                <h6><b>  Name :</b> {{userData.personalDetails.FirstName}} {{userData.personalDetails.LastName}}</h6>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <h6><b>Job Title :</b> {{userData.personalDetails.GetDone}}</h6>
                                             </div>
                                         </div><br>
+
                                         <div class="row">
                                             <div class="col-12">
                                                 <p><b>Job Description : 
@@ -144,8 +139,11 @@
                                             </div>
                                         </div>
                                         <div class="row">
+                                            <div class="col-4">
+                                                <p><b>Budget : </b>${{userData.personalDetails.dollar}}</p>
+                                            </div>
                                             <div class="col-8">
-                                                <p><b>Payment Option : </b>{{userData.personalDetails.contract}}</p>
+                                                <p><b>Experience : </b>{{userData.personalDetails.contract}}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -232,28 +230,31 @@
                             <div class="card-header">
                                 <div class="modal-body">
                                     <div class="row">
-                                        <div class="col-12">
-                                            <h4> <b>{{userData.personalDetails.FirstName}}</b>
+                                        <div class="col-8">
+                                            <h4> <b>{{userData.personalDetails.FirstName}}{{userData.personalDetails.LastName}}</b>
                                             </h4>
                                         </div>
-                                    </div><br>
+                                        <div class="col-4">
+                                            <button class="btn btn-success" style="width:100px;">Invite</button>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-12">
-                                            <p><b>Job Description : <br></b>{{userData.personalDetails.FirstName}}</p>
+                                            <p><b>Job Description : <br></b>{{userData.personalDetails.Overview}}</p>
                                         </div>
                                     </div>
                                     <h4><b>TimeLine</b></h4>
                                     <div class="row">
                                         <div class="col-4">
-                                            <p><b>English level : </b>{{userData.personalDetails.FirstName}}</p>
+                                            <p><b>English level : </b>{{userData.personalDetails.English}}</p>
                                         </div>
                                         <div class="col-8">
-                                            <p><b>Project Name : </b>{{userData.personalDetails.FirstName}}</p>
+                                            <p><b>Project Name : </b>{{userData.personalDetails.projectName}}</p>
                                         </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-4">
-                                            <p><b>Budget : </b>{{userData.personalDetails.FirstName}}</p>
+                                            <p><b>Budget : </b>{{userData.personalDetails.dollar}}</p>
                                         </div>
                                         <div class="col-8">
                                             <p><b>Payment Option :</b>{{userData.personalDetails.FirstName}}</p>

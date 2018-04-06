@@ -16,17 +16,17 @@ export class ForgotComponent implements OnInit {
     ngOnInit() {
         this.activatedRoute.params.subscribe((param) => {
             this.userId = param['id'];
-            this.getUserData();
+            // this.getUserData();
             console.log("============== User ID ==============", this.userId);
         });
     }
-    getUserData() {
-        this.HttpService.post("user/find",this.userData).subscribe(resp=>{
-            console.log("======Bhushan======",resp)
-        },err=>{
-            console.log("====Error======",err)
-        })
-    }
+    // getUserData() {
+    //     this.HttpService.post("user/find",this.userData).subscribe(resp=>{
+    //         console.log("======Bhushan======",resp)
+    //     },err=>{
+    //         console.log("====Error======",err)
+    //     })
+    // }
     save(form: any, event: Event) {
 
         if (form.valid) {

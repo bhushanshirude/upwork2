@@ -69,6 +69,25 @@ module.exports = {
             })
     },
 
+    uploadFile: function(req, res) {
+        var filename = req.files;
+        let formdata = req.body.frmdata;
+        if (!req.files)
+            return res.status(400).send('No files were uploaded.');
+        let sampleFile = req.files.filename;
+        sampleFile.mv("./uploads/profile/" + sampleFile.name, function(err) {
+            if (err) {
+                return res.status(500).send(err);
+            }
+            Model.findByIdAndUpdate(req.params.id, { $set: { "personalDetails.profileImage": sampleFile.name } }, { new: true }, function(err, doc) {
+                if (err) {
+                    return res.status(500).json({ status: "Error", message: err, docs: '' });
+                }
+                res.status(200).json({ status: "Success", message: "Success", docs: doc });
+            })
+        });
+    },
+
     forgotPassword: function(request, response) {
 
         Model.findOne(request.body, function(err, doc) {

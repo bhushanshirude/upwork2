@@ -3,6 +3,8 @@ import { TextMaskModule } from 'angular2-text-mask/dist/angular2TextMask';
 import swal from 'sweetalert2';
 import { httpService } from 'httpservice';
 import { Router } from '@angular/router';
+import { ImageResult, ResizeOptions } from 'ng2-imageupload';
+
 
 @Component({
   selector: 'app-home',
@@ -11,14 +13,42 @@ import { Router } from '@angular/router';
 
 export class UpdateComponent implements OnInit {
   public mask = ['+', /\d/, /\d/, '(', /[1-9]/, /\d/, /\d/, ')', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/,];
-  public mask1 = [ /[1-9]/, /\d/, '.', /[1-9]/, /\d/, '/hr'];
+  public mask1 = [/[1-9]/, /\d/, '.', /[1-9]/, /\d/, '/hr'];
   private userData;
   private swalService;
-  constructor(private HttpService: httpService, private router: Router) {
-    this.userData = JSON.parse(localStorage.getItem("user"))
+  src: string = "";
+  private profileImg;
+   constructor(private HttpService: httpService, private router: Router) {
+    this.userData = JSON.parse(localStorage.getItem("user"));
   }
-  ngOnInit() {
+  resizeOptions: ResizeOptions = {
+    resizeMaxHeight: 128,
+    resizeMaxWidth: 128
+  };
+  selected(imageResult: ImageResult) {
+    this.src = imageResult.resized
+      && imageResult.resized.dataURL
+      || imageResult.dataURL;
+  }
+  ngOnInit() {}
 
+  fileChange(event) {
+    let fileList: FileList = event.target.files;
+    if (fileList.length > 0) {
+        let file: File = fileList[0];
+        let fd = new FormData();
+        fd.append('filename', file);
+  
+        this.HttpService.post('user/upload/'+ this.userData._id, fd)
+            .subscribe(resp =>
+               {
+                this.profileImg = "http://localhost:8080/profile/" + file.name;
+            },
+          err=>{
+            console.log("===============Bhushan=========",err)
+          });
+          return true;
+    }
   }
   review(form: any, event: Event) {
     event.preventDefault();
@@ -31,9 +61,13 @@ export class UpdateComponent implements OnInit {
         }, err => {
           swal("Error", "update your Profile", "error")
         });
-        form.resetForm();
-        return true;
+      form.resetForm();
+      return true;
     }
     swal("Error", "update your Profile", "error")
   }
+ 
 }
+
+
+

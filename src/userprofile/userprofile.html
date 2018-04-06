@@ -1,0 +1,43 @@
+<style>
+    .card-footer a {
+        margin-left: 220px;
+    }
+    
+    .card-footer button {
+        margin-left: 20px;
+    }
+</style>
+
+<div class="card  col-md-6 offset-3">
+    <div class="card-header">
+        <h5>User_Profile</h5>
+    </div>
+
+    <div class="card-body">
+        <div class="row mt-3">
+            <div class="col-md-6">
+                FirstName :
+                <span class="form-control" readonly>{{userData.personalDetails.FirstName}}</span>
+            </div>
+
+            <div class="col-md-6">
+                LastName :
+                <span class="form-control" readonly>{{userData.personalDetails.LastName}}</span>
+            </div>
+        </div>
+        <div class="row mt-5 mb-3">
+            <div class="col-md-6">
+                Email :
+                <span class="form-control" readonly>{{userData.personalDetails.Email}}</span>
+            </div>
+            <div class="col-md-6">
+                Password :
+                <input type="text" class="form-control" id="password" value="{{userData.personalDetails.Password}}" name="userData.personalDetails.Password" ngModel #Password="ngModel">
+            </div>
+        </div>
+    </div>
+    <div class="card-footer ">
+        <a><button class="btn btn-primary ">Edit</button> </a>
+        <button class="btn btn-success" (click)="update()">Update</button>
+    </div>
+</div>
