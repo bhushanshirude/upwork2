@@ -19,7 +19,6 @@ export class SearchComponent implements OnInit{
 
     clicks(x){       
         console.log("===========================Dipu==============",x)
-
         //  x.classList.toggle("fa fa-star");
     }
 }
