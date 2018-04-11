@@ -1,0 +1,50 @@
+<style>
+    .row img {
+        width: 100px;
+        height: 100px;
+        margin-left: 300px;
+    }
+</style>
+<div id="Job" class="tabcontent" style="margin-top:5%">
+    <div class="card col-7  mt-5 offset-3">
+        <div class="card-header mb-6 row fa fa-feed" style="font-size:24px; color:#24a567">
+            <h5 style="margin-left:20px;">My Job Feed</h5>
+        </div>
+        <div class="card-body">
+            <div class="input-group mt-2">
+                <input [type]="text" class="form-control" id="search" placeholder="Example : Angular Developer." [(ngModel)]="inputSearch">
+                <div class=" input-group-append ">
+                    <span class="input-group-text ">
+                           <a href="javascript:void(0) "><i class="fa fa-search form-control-feedback "></i></a>
+                        </span>
+                </div>
+            </div>
+            <div class="card col-md-12 mt-5 mb-5">
+                <div class="card-header" *ngFor="let Hireproject of Hireprojects | filter:inputSearch: 'GetDone'">
+                    <div class="row">
+                        <div class="col-8">
+                            <h6>{{Hireproject.personalDetails.GetDone}}</h6>
+                        </div>
+                        <div class="col-md-4">
+                            <i style="color:green; margin-left:180px; font-size:24px;" (click)="toggle= !toggle" class="fa" [ngClass]="toggle?'fa-star':'fa-star-o'" (click)="calling()">
+                                    </i>
+                        </div>
+                    </div>
+                    {{Hireproject.personalDetails.desired}}
+                    <div class="row">
+                        <div class="col-12 mt-3">
+                            <p>{{Hireproject.personalDetails.Describe}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <img [src]="'images/2.png'">
+                <div class="col-12 mt-3">
+                    <p>job searching is the act of looking for employment underemployment,discontent with a current position a desire for a better position.</p>
+                    <p> A job description or JD is a document that describes the general tasks, or other related, </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

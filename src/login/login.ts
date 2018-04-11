@@ -22,11 +22,14 @@ export class LoginComponent implements OnInit {
 
         if (form.valid) {
 
-            console.log("================j1========", this.userData)
-            this.HttpService.post("user/find", form.value).subscribe(resp => {
-                // console.log("============ Response ============", resp);
+            this.HttpService.post("user/finds", form.value).subscribe(resp => {
+               
+                console.log("============ Response ============", resp);
+              
                 localStorage.setItem("user", JSON.stringify(resp.docs));
+              
                 this.userData = JSON.parse(localStorage.getItem("user"));
+              
                 swal("Login Successfully", "Continue your profile", "success");
 
                 let red: string = "home/profile";
@@ -39,6 +42,6 @@ export class LoginComponent implements OnInit {
                 return true;
             })
         }
-        swal("Error", "Please Update the field", "error")
+        swal("Error", "Incorrect UserName or Password", "error")
     }
 }

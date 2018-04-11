@@ -32,12 +32,58 @@
             </div>
             <div class="col-md-6">
                 Password :
-                <input type="text" class="form-control" id="password" value="{{userData.personalDetails.Password}}" name="userData.personalDetails.Password" ngModel #Password="ngModel">
+                <input type="text" class="form-control" id="password" value="{{userData.personalDetails.Password}}" readonly>
             </div>
         </div>
     </div>
     <div class="card-footer ">
-        <a><button class="btn btn-primary ">Edit</button> </a>
+        <a>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">Edit</button>
+        </a>
         <button class="btn btn-success" (click)="update()">Update</button>
     </div>
+</div>
+
+<div class="container">
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">profile_Edit</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <div class="card-body">
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                FirstName :
+                                <span class="form-control">{{userData.personalDetails.FirstName}}</span>
+                            </div>
+
+                            <div class="col-md-6">
+                                LastName :
+                                <span class="form-control">{{userData.personalDetails.LastName}}</span>
+                            </div>
+                        </div>
+                        <div class="row mt-5 mb-3">
+                            <div class="col-md-6">
+                                Email :
+                                <span class="form-control">{{userData.personalDetails.Email}}</span>
+                            </div>
+                            <div class="col-md-6">
+                                Password :
+                                <input type="text" class="form-control" id="password" value="{{userData.personalDetails.Password}}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" data-dismiss="modal">Update</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
 </div>

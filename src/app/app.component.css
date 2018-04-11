@@ -8,3 +8,42 @@ p {
     color: white;
     margin-left: 10px;
 }
+
+.navbar-nav a {
+    color: white;
+    margin-left: 50px;
+}
+
+.page-footer {
+    background-color: #56a24f;
+}
+
+.list-unstyled li {
+    color: white;
+    cursor: pointer;
+}
+
+.text-uppercase {
+    color: white;
+}
+
+.dropdown-menu a {
+    color: black;
+}
+
+.dropdown-menu {
+    margin-left: 85%;
+}
+
+.dropdown-menu a {
+    margin-left: -0px;
+}
+
+.dropdown-menu :hover {
+    background-color: #56a24f;
+    color: white;
+}
+
+.nav-item a {
+    font-size: 18px;
+}

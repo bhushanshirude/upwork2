@@ -9,10 +9,15 @@ import { Router } from '@angular/router';
 
 export class ViewComponent implements OnInit {
     private userData;
+    private flag = "viewpost";
     constructor(private HttpService: httpService, private router: Router) {
         this.userData = JSON.parse(localStorage.getItem("user"));
-        console.log("========sssssssss========",this.userData)
     }
-    ngOnInit() {}
-
+    ngOnInit() { }
+    
+    view(name) {
+        let baseUrl = "home/viewjob/";
+        this.flag = name;
+        this.router.navigateByUrl(baseUrl + name);
+    }
 }

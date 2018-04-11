@@ -16,14 +16,12 @@ export class PostUpdateComponent implements OnInit {
         this.userData = JSON.parse(localStorage.getItem("user"));
 
     }
-    ngOnInit() { }
+    ngOnInit(){}
     post(form: any, event: Event) {
         event.preventDefault();
         console.log(this.userData)
         this.HttpService.put("user/" + this.userData._id, this.userData).subscribe(resp => {
-
             swal("Post Job Updated", "Thank you", "success")
-
             this.router.navigate(["/home/viewjob"])
         }, err => {
 

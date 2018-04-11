@@ -1,0 +1,56 @@
+<style>
+    * {
+        box-sizing: border-box
+    }
+    
+    body {
+        font-family: "Lato", sans-serif;
+    }
+    
+    .tab {
+        float: left;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        width: 20%;
+        height: 167px;
+        margin-left: 1%;
+    }
+    
+    .tab button {
+        display: block;
+        background-color: inherit;
+        color: #858181;
+        padding: 15px 16px;
+        width: 100%;
+        border: none;
+        outline: none;
+        text-align: left;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 17px;
+    }
+    
+    .tab button:hover {
+        background-color: #37a000;
+        color: white;
+    }
+    
+    .tab button.active {
+        background-color: #37a000;
+    }
+    
+    .container {
+        position: fixed;
+        margin-top: 5%;
+        margin-left: 50px;
+    }
+</style>
+
+<div class="container" ng-init="getalljobs()">
+    <div class="tab">
+        <button class="tablinks" (click)="view('job')" [ngClass]="flag=='job'?'active':''">Search Job</button>
+        <button class="tablinks " (click)="view('invitation')" [ngClass]="flag=='invitation'?'active':''">view invitation</button>
+        <button class="tablinks " (click)="view('saved')" [ngClass]="flag=='saved'?'active':''">Saved Jobs</button>
+    </div>
+</div>
+<router-outlet></router-outlet>

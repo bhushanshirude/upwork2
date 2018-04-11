@@ -20,13 +20,6 @@ export class ForgotComponent implements OnInit {
             console.log("============== User ID ==============", this.userId);
         });
     }
-    // getUserData() {
-    //     this.HttpService.post("user/find",this.userData).subscribe(resp=>{
-    //         console.log("======Bhushan======",resp)
-    //     },err=>{
-    //         console.log("====Error======",err)
-    //     })
-    // }
     save(form: any, event: Event) {
 
         if (form.valid) {

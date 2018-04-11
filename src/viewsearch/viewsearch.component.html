@@ -1,0 +1,54 @@
+<div id="freelancers" class="tabcontent">
+    <div class="col-7 offset-4">
+        <div class="card" style="margin-top:12%; margin-left:-50px;">
+            <div class="card-header">
+                <h3>Search Freelancers</h3>
+            </div>
+            <div class="card-body">
+                <div class="input-group ">
+                    <input [type]="text" class="form-control" id="search" placeholder="Example : Angular Developer." [(ngModel)]="inputSearch">
+                    <div class=" input-group-append ">
+                        <span class="input-group-text ">
+                                <a href="javascript:void(0) "><i class="fa fa-search form-control-feedback "></i></a>
+                             </span>
+                    </div>
+                </div>
+                <div class="card col-sm-12 mt-5">
+                    <div class="card-body col-md-10" *ngFor="let freelancer of freelancerData | filter:inputSearch :'Clients'">
+                        <div class="row ">
+                            <div class="col-md-6 ">
+                                <h6> <b>{{freelancer.personalDetails.FirstName}} {{freelancer.personalDetails.LastName}}</b></h6>
+                            </div>
+                            <div class="col-6 ">
+                                <button class="btn btn-success " style="width:100px; margin-left:240px; " (click)="Invite(i) ">Invite</button>
+                            </div>
+                        </div>
+                        <div class="row mb-3 ">
+                            <h6 style="margin-left:20px; "> {{freelancer.personalDetails.Clients}}</h6>
+                        </div>
+                        <div class="row ">
+                            <div class="col-md-4 ">
+                                <h6>
+                                    <b style="color:green "> $ </b><b>: {{freelancer.personalDetails.dollar}}</b></h6>
+                            </div>
+                            <div class="col-md-4 ">
+                                <h6>
+                                    <h6 class="fa fa-spinner " style="color:green "> </h6><b> : {{freelancer.personalDetails.ExperienceLevel}}</b>
+                                </h6>
+
+                            </div>
+                            <div class="col-md-4 ">
+                                <h6>
+                                    <h6 class="fa fa-map-marker " style="color :green "> </h6><b> : {{freelancer.personalDetails.country}}</b></h6>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <h6 style="margin-left:20px; "> {{freelancer.personalDetails.Overview}}</h6>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

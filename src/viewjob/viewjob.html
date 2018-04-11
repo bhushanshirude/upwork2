@@ -1,0 +1,65 @@
+<style>
+    * {
+        box-sizing: border-box
+    }
+    
+    body {
+        font-family: "Lato", sans-serif;
+    }
+    
+    .tab {
+        float: left;
+        border: 1px solid #ccc;
+        background-color: #f1f1f1;
+        width: 20%;
+        height: 225px;
+        margin-left: 10%;
+    }
+    
+    .tab button {
+        display: block;
+        background-color: inherit;
+        color: #858181;
+        padding: 15px 16px;
+        width: 100%;
+        border: none;
+        outline: none;
+        text-align: left;
+        cursor: pointer;
+        transition: 0.3s;
+        font-size: 17px;
+    }
+    
+    .tab button:hover {
+        background-color: #37a000;
+        color: white;
+    }
+    
+    .tab button.active {
+        background-color: #37a000;
+        color: #fff;
+    }
+    
+    .card-body input[type=text] {
+        padding: 4px;
+        font-size: 17px;
+        border: 1px solid grey;
+        float: left;
+        width: 80%;
+        background: #f1f1f1;
+    }
+    
+    .container {
+        margin-left: 50px;
+        margin-top: 90px;
+    }
+</style>
+<div class="container" ng-init="getalljobs()">
+    <div class="tab">
+        <button class="tablinks" (click)="view('viewpost')" [ngClass]="flag=='viewpost'?'active':''">View Post</button>
+        <button class="tablinks " (click)="view('viewproposal')" [ngClass]="flag=='viewproposal'?'active':''">View Proposals</button>
+        <button class="tablinks" (click)="view('viewinvite')" [ngClass]="flag=='viewinvite'?'active':''">View Invite</button>
+        <button class="tablinks" (click)="view('viewsearch')" [ngClass]="flag=='viewsearch'?'active':''">Search Freelancers</button>
+    </div>
+</div>
+<router-outlet></router-outlet>

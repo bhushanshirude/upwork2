@@ -25,12 +25,11 @@ export class httpService {
         return this.http.put(this.API_URL + url, data)
             .map(response => response.json());
     }
-
-
-
+    
     setLocalStorage(name, value) {
         localStorage.setItem(name, value);
     }
+    
     getLocalStorage(name) {
         return JSON.parse(localStorage.getItem(name));
     }
